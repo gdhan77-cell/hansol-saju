@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#141936">
-<title>한솔 명리상담소 · AI 사주분석 신청</title>
-<meta name="description" content="여덟 글자로 쓰는 「내 인생 사용설명서」. AI가 만세력을 계산하고, 명리 상담 마스터 무극 선인이 마지막 문장을 책임집니다. 30,000원 · 영업일 2일 내 발송.">
+<title>한솔 명리상담소 · AI 사주리포트 · 무료 타로</title>
+<meta name="description" content="무료 타로 체험과 AI 사주리포트. 여덟 글자로 쓰는 「내 인생 사용설명서」 — 10장 서사형 MECE 분석 A4 30쪽, 원국표(지장간·12운성·신살)와 4종 인포그래픽, 맞춤 시 1편. 명리 상담 마스터 무극 선인이 직접 검수합니다. 30,000원 · 영업일 2일 내 발송.">
 <style>
 :root{
   --navy:#141936; --navy-2:#1e2348; --navy-3:#0e1129; --navy-4:#272d5a;
@@ -69,6 +69,9 @@ h1 em{font-style:normal;color:var(--gold);border-bottom:2px solid rgba(230,184,9
 .hero-meta li{list-style:none;display:flex;align-items:center;gap:7px}
 .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);display:inline-block}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero-link{margin-top:13px;font-size:14px}
+.hero-link a{color:var(--muted);border-bottom:1px solid rgba(230,184,92,.35);padding-bottom:2px}
+.hero-link a:hover{color:var(--gold);text-decoration:none}
 
 /* 다이얼 */
 .dial-wrap{position:relative;display:grid;place-items:center;padding:6px}
@@ -287,6 +290,101 @@ footer a{color:var(--ink-2)}
 .local-list{list-style:none;display:grid;gap:8px;font-size:13px;color:var(--ink-2)}
 .local-list li{border:1px solid var(--line-2);border-radius:10px;padding:9px 11px;display:flex;justify-content:space-between;gap:10px}
 .local-list .st{color:var(--muted);font-size:12px}
+/* ── 리포트 사양 ── */
+.spec-strip{display:grid;gap:8px;margin:20px 0 22px}
+@media(min-width:760px){.spec-strip{grid-template-columns:1fr 1fr}}
+.spec-item{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line-2);border-radius:var(--r-s);
+  padding:11px 13px;background:rgba(255,255,255,.02);font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.spec-item .k{font-family:var(--serif);color:var(--gold);font-size:11.5px;letter-spacing:.04em;min-width:58px;padding-top:2px;white-space:nowrap}
+.ch.poem{grid-column:1/-1;border-color:rgba(230,184,92,.42);background:linear-gradient(120deg, rgba(230,184,92,.10), rgba(20,25,54,.45))}
+.ch.poem .n{color:var(--gold)}
+
+/* ── 무료 타로 ── */
+.nav-tarot{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold);color:var(--gold);
+  border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:600;white-space:nowrap;background:var(--gold-soft)}
+.nav-tarot:hover{background:rgba(230,184,92,.22);text-decoration:none}
+@media(max-width:520px){
+  .topbar-in{gap:8px}
+  .brand{font-size:16px;gap:8px}
+  .brand .seal{width:26px;height:26px;font-size:13px}
+  .brand > span > span{display:none}
+  .nav-tarot{padding:6px 10px;font-size:12px}
+  .icon-btn{width:38px;height:38px}
+}
+.tarot-sec{padding-top:44px}
+.tarot-shell{position:relative;overflow:hidden;padding:22px 20px 20px}
+.tarot-shell::before{content:"";position:absolute;left:-10%;right:-10%;top:-120px;height:240px;pointer-events:none;
+  background:radial-gradient(closest-side, rgba(230,184,92,.16), rgba(230,184,92,0))}
+.t-topics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;position:relative}
+.t-topic{border:1px solid rgba(255,255,255,.16);border-radius:999px;min-height:44px;padding:0 16px;font-size:14.5px;
+  color:var(--ink-2);background:rgba(255,255,255,.02);transition:.15s}
+.t-topic:hover{border-color:rgba(230,184,92,.5)}
+.t-topic[aria-pressed="true"]{border-color:var(--gold);background:var(--gold);color:#141936;font-weight:700}
+.t-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:14px;border-top:1px solid var(--line-2);position:relative}
+.t-bar .lb{font-size:12.5px;color:var(--muted);letter-spacing:.06em}
+.t-mode{min-height:40px;padding:0 13px;border-radius:999px;border:1px dashed rgba(255,255,255,.2);font-size:13.5px;color:var(--muted)}
+.t-mode[aria-pressed="true"]{border-style:solid;border-color:var(--gold);color:var(--gold)}
+.t-deal{margin-left:auto;min-height:48px;padding:0 22px;border-radius:999px;font-weight:700;font-size:15.5px;
+  background:linear-gradient(180deg,var(--gold),var(--gold-2));color:#141936;box-shadow:0 12px 26px -16px rgba(230,184,92,.9)}
+.t-deal:hover{filter:brightness(1.06)}
+.t-deal[disabled]{opacity:.45;box-shadow:none;cursor:default}
+.t-reset{min-height:40px;padding:0 10px;font-size:13px;color:var(--muted);text-decoration:underline}
+.t-hint{margin:14px 0 0;font-size:13.5px;color:var(--muted);min-height:1.6em;position:relative}
+.t-board{display:flex;justify-content:center;align-items:flex-start;gap:clamp(8px,3.4vw,22px);margin:18px 0 30px}
+.tcard{position:relative;appearance:none;border:0;background:none;padding:0;width:clamp(88px,27vw,148px);aspect-ratio:2/3.15;
+  perspective:900px;cursor:pointer;border-radius:14px;transition:transform .25s;animation:cardIn .45s both}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+@media(hover:hover){.tcard:hover:not(.flipped){transform:translateY(-6px)}}
+.tcard-in{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tcard.flipped .tcard-in{transform:rotateY(180deg)}
+.tface{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;
+  box-shadow:0 18px 34px -22px rgba(0,0,0,.95)}
+.tback{border:1px solid rgba(230,184,92,.55);color:var(--gold);
+  background:repeating-linear-gradient(45deg, rgba(230,184,92,.085) 0 1px, transparent 1px 9px),
+    radial-gradient(circle at 50% 36%, #2c2b48 0%, #181b35 62%, #101227 100%)}
+.tback .seal{width:44%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(230,184,92,.62);display:grid;place-items:center;
+  font-family:var(--serif);font-size:clamp(17px,4.6vw,25px);background:rgba(230,184,92,.10)}
+.tback .bt{font-size:9px;letter-spacing:.16em;color:rgba(230,184,92,.72);margin-top:10px;text-align:center}
+.tfront{transform:rotateY(180deg);border:1px solid rgba(230,184,92,.6);color:var(--gold);padding:9% 6%;
+  background:radial-gradient(circle at 50% 32%, #3b3021 0%, #251e16 58%, #191410 100%)}
+.tfront .num{position:absolute;top:6px;left:9px;font-family:var(--serif);font-size:11px;color:rgba(230,184,92,.8);letter-spacing:.06em}
+.tfront .ori{position:absolute;top:6px;right:8px;font-size:8.5px;letter-spacing:.02em;color:rgba(250,246,238,.72)}
+.t-ico{width:48%;height:auto;stroke:var(--gold);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.tcard.is-rev .t-ico{transform:rotate(180deg)}
+.tfront .nm{font-family:var(--serif);font-size:clamp(12.5px,3.3vw,16px);color:#f7f1e2;margin-top:8px;text-align:center;line-height:1.25}
+.tfront .en{font-size:8px;letter-spacing:.08em;color:rgba(230,184,92,.7);margin-top:3px;text-align:center;text-transform:uppercase}
+.tfront .kw{font-size:9.5px;color:rgba(250,246,238,.82);margin-top:6px;text-align:center;line-height:1.3}
+.t-tap{position:absolute;left:0;right:0;bottom:-19px;font-size:10.5px;color:var(--gold-2);letter-spacing:.04em;text-align:center;opacity:.9;transition:opacity .2s}
+.tcard.flipped .t-tap{opacity:0}
+.t-reading{margin-top:20px;border-top:1px solid var(--line-2);padding-top:20px}
+.read-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.read-head .badge{border:1px solid var(--line);background:var(--gold-soft);color:var(--gold);border-radius:999px;padding:4px 11px;font-size:12.5px}
+.read-head .badge.q{border-color:var(--line-2);background:transparent;color:var(--muted)}
+.read-grid{display:grid;gap:10px}
+@media(min-width:720px){.read-grid{grid-template-columns:repeat(3,1fr)}}
+.rc{border:1px solid var(--line-2);border-radius:var(--r-s);padding:13px 14px;background:rgba(255,255,255,.025)}
+.rc .pos{font-size:11.5px;letter-spacing:.12em;color:var(--gold-2)}
+.rc .rnm{font-family:var(--serif);font-size:16.5px;margin:5px 0 1px;color:var(--ink)}
+.rc .rori{font-size:11.5px;color:var(--muted)}
+.rc .rkw{font-size:13px;color:var(--gold);margin-top:7px}
+.rc p{font-size:13.5px;color:var(--ink-2);margin-top:5px;line-height:1.68}
+.read-sum{margin-top:18px}
+.read-sum .sum-t{font-family:var(--serif);font-size:15.5px;color:var(--gold);margin-bottom:7px;letter-spacing:.04em}
+.read-sum p.body{font-size:15px;color:var(--ink-2);line-height:1.82}
+.master-say{margin-top:14px;border:1px solid rgba(230,184,92,.32);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;
+  background:linear-gradient(120deg, rgba(230,184,92,.10), rgba(20,25,54,.3));padding:14px 16px}
+.master-say .who{font-size:11.5px;letter-spacing:.1em;color:var(--gold-2);display:block;margin-bottom:6px}
+.master-say p{font-size:14.5px;color:var(--ink);line-height:1.82}
+.read-cta{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.read-cta .lead{flex:1 0 100%;font-size:14px;color:var(--ink-2);margin-bottom:2px}
+@media(max-width:560px){
+  .t-deal{flex:1 0 100%;margin-left:0;order:5}
+  .t-reset{flex:1 0 100%;order:6;text-align:center}
+}
+.read-cta .note{flex:1 0 100%;margin-top:2px}
+.t-disclaimer{margin-top:16px;font-size:12px;color:var(--muted);line-height:1.65;border-top:1px dashed rgba(255,255,255,.08);padding-top:12px}
 @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} html{scroll-behavior:auto} }
 </style>
 </head>
@@ -306,6 +404,7 @@ footer a{color:var(--ink-2)}
       <span><b>한솔 명리상담소</b><span>HANSOL MYEONGRI</span></span>
     </a>
     <div class="spacer"></div>
+    <a class="nav-tarot" href="#tarot">☾ 무료 타로</a>
     <a class="top-tel" href="tel:01087109935">☎ <span>010-8710-9935</span></a>
     <button class="icon-btn" type="button" id="openSettings" aria-label="설정 열기">⚙</button>
   </div>
@@ -325,14 +424,15 @@ footer a{color:var(--ink-2)}
           <b>AI가 만세력으로 계산하고, 전문 상담가가 마지막 문장을 책임집니다.</b></p>
         <ul class="hero-meta">
           <li><i class="dot"></i>만세력 정밀 계산</li>
-          <li><i class="dot"></i>6단계 구조 분석 · 여덟 장</li>
+          <li><i class="dot"></i>10장 서사형 MECE 분석 · A4 30쪽</li>
           <li><i class="dot"></i>명리 상담 마스터 무극 선인 직접 검수</li>
           <li><i class="dot"></i>영업일 2일 내 발송</li>
         </ul>
         <div class="hero-cta">
           <a class="btn btn-gold" href="#apply">내 사주 신청하기 · 30,000원</a>
-          <a class="btn btn-ghost" href="#report">리포트 미리보기</a>
+          <a class="btn btn-ghost" href="#tarot">☾ 무료 타로 먼저 보기</a>
         </div>
+        <p class="hero-link"><a href="#report">리포트 구성 미리보기 →</a></p>
       </div>
       <div class="dial-wrap">
         <svg class="dial" id="dial" viewBox="0 0 300 300" role="img" aria-label="천간과 지지를 새긴 원형 사주 다이얼">
@@ -356,6 +456,40 @@ footer a{color:var(--ink-2)}
     </div>
   </section>
 
+  <!-- 무료 타로 -->
+  <section class="tarot-sec" id="tarot">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">무료 체험 · 가입 없이 바로</p>
+        <h2>오늘의 타로 — 카드에 물어보기</h2>
+        <p>고민의 분야를 고르고 카드를 뒤집어 보세요. 메이저 아르카나 22장으로 지금의 마음과 흐르는 흐름, 무극 선인의 조언을 읽어 드립니다.</p>
+      </div>
+
+      <div class="card tarot-shell">
+        <div class="t-topics" id="tarotTopics" role="group" aria-label="고민 분야 선택">
+          <button class="t-topic" type="button" data-topic="love" aria-pressed="false">연애·인연</button>
+          <button class="t-topic" type="button" data-topic="money" aria-pressed="false">재물·일</button>
+          <button class="t-topic" type="button" data-topic="job" aria-pressed="false">직업·진로</button>
+          <button class="t-topic" type="button" data-topic="people" aria-pressed="false">대인관계</button>
+          <button class="t-topic" type="button" data-topic="today" aria-pressed="false">오늘의 운</button>
+        </div>
+
+        <div class="t-bar">
+          <span class="lb">장수</span>
+          <button class="t-mode" type="button" data-spread="3" aria-pressed="true">세 장</button>
+          <button class="t-mode" type="button" data-spread="1" aria-pressed="false">한 장</button>
+          <button class="t-deal" type="button" id="tarotDeal" disabled>카드 섞어 뽑기</button>
+          <button class="t-reset" type="button" id="tarotReset">처음으로</button>
+        </div>
+
+        <p class="t-hint" id="tarotHint">분야를 고르고 카드를 뽑아 보세요. 세 장은 마음·흐름·조언의 자리로, 한 장은 오늘의 카드로 읽습니다.</p>
+        <div class="t-board" id="tarotBoard" aria-live="polite"></div>
+        <div class="t-reading" id="tarotReading" hidden></div>
+        <p class="t-disclaimer">타로는 재미와 성찰을 위한 도구입니다. 미래를 단정하지 않으며, 의료·법률·투자 같은 중요한 판단의 근거로 삼지 마세요. 깊은 해석이 필요하시면 아래 사주리포트나 마스터 상담으로 이어 가실 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 철학 -->
   <section id="about">
     <div class="wrap">
@@ -375,7 +509,7 @@ footer a{color:var(--ink-2)}
         <div class="card pad robot">
           <h3>다빈치 로봇은 수술을 대신하지 않습니다</h3>
           <p>손끝을 정밀하게 돕고, 마지막 판단은 의사가 합니다.
-            이 리포트도 같습니다. AI는 여덟 글자를 계산하고 여섯 단계로 구조를 뽑아 초안을 만듭니다.
+            이 리포트도 같습니다. AI는 여덟 글자를 계산하고 열 장의 구조로 초안을 만듭니다.
             <b>문장을 고르고, 고치고, 책임지는 일은 사람이 합니다.</b></p>
           <p style="margin-top:12px">그래서 AI가 만든 초안을 그대로 보내지 않습니다.
             제가 직접 읽고 문장을 다듬은 뒤에 보내 드립니다. 하루이틀이 더 걸리는 이유입니다.</p>
@@ -388,9 +522,16 @@ footer a{color:var(--ink-2)}
   <section id="report">
     <div class="wrap">
       <div class="sec-head">
-        <p class="sec-kicker">납품물</p>
-        <h2>「내 인생 사용설명서」 여덟 장</h2>
-        <p>A4 PDF 8~12쪽 + 웹 열람 + 한 장 요약표. 인쇄해서 펼쳐 놓고 읽으실 수 있습니다.</p>
+        <p class="sec-kicker">납품물 · A4 30쪽</p>
+        <h2>「내 인생 사용설명서」 10장, 서른 쪽</h2>
+        <p>한 장 한 장이 이어져 하나의 이야기가 됩니다. <b>10장 서사형 MECE 분석 · A4 30쪽 분량</b>에 원국표(지장간·12운성·신살), 4종 인포그래픽, 맞춤 시 1편을 더하고 명리 상담 마스터 무극 선인이 직접 검수합니다.</p>
+      </div>
+
+      <div class="spec-strip">
+        <div class="spec-item"><span class="k">본문</span><span>10장 서사형 MECE 분석 · A4 30쪽 분량 (개조식 목록이 아닌 이야기체)</span></div>
+        <div class="spec-item"><span class="k">원국표</span><span>네 기둥 · 지장간 · 12운성(봉법·거법) · 신살을 한 표에</span></div>
+        <div class="spec-item"><span class="k">인포그래픽</span><span>4종 — 표지 일간 일러스트 · 진태양시 보정 타임라인 · 오행 분포·신강약 · 대운 궤적</span></div>
+        <div class="spec-item"><span class="k">마무리</span><span>맞춤 시 1편 + 12칸 요약표 + 명리 상담 마스터 무극 선인 직접 검수</span></div>
       </div>
       <div class="chapters" id="chapterList"></div>
 
@@ -424,9 +565,11 @@ footer a{color:var(--ink-2)}
           </div>
           <ul>
             <li>만세력 정밀 계산 (절기·진태양시 기준)</li>
-            <li>6단계 구조 분석 → 여덟 장 본문 + 12칸 요약표</li>
+            <li>10장 서사형 MECE 분석 → A4 30쪽 본문</li>
+            <li>원국표(지장간·12운성·신살) + 4종 인포그래픽</li>
+            <li>맞춤 시 1편 + 12칸 요약표</li>
             <li>명리 상담 마스터 무극 선인 직접 검수·문장 보완</li>
-            <li>PDF · 웹 열람 · 요약표 이미지</li>
+            <li>PDF · 웹 열람</li>
             <li>입금 확인 후 영업일 2일 내 이메일 발송</li>
             <li>분석 착수 전 전액 환불 · 착수 후 3일 이내 50% 환불</li>
           </ul>
@@ -710,7 +853,7 @@ footer a{color:var(--ink-2)}
     <p>사업자등록번호 · 통신판매업 신고번호는 개업 절차에 맞추어 표기합니다.<br>
       상담 시간 월~토 10:00~18:00 · ☎ <a href="tel:01087109935">010-8710-9935</a> · <a href="mailto:gdhan77@gmail.com">gdhan77@gmail.com</a></p>
     <div class="footlinks">
-      <a href="#report">리포트 구성</a><a href="#apply">신청서</a>
+      <a href="#tarot">무료 타로</a><a href="#report">리포트 구성</a><a href="#apply">신청서</a>
       <a href="#" id="openSettings2">연결 설정</a>
     </div>
     <p style="margin-top:10px;font-size:12px" id="demoFoot">이 화면은 상담사 본인 확인용 체험판입니다. 실제 접수는 구글시트 연결 후 이루어집니다.</p>
@@ -833,19 +976,24 @@ footer a{color:var(--ink-2)}
 
   /* ── 정적 목록 ── */
   var CHAPTERS = [
-    ['1','나의 원국','여덟 글자·일간·계절·격국, 이 사람을 한 문장 이미지로'],
-    ['2','타고난 기질과 재능','오행의 분포와 강약, 십신이 주는 선물'],
-    ['3','관계의 문법','배우자·가족·동료와 반복되는 패턴과 조언'],
-    ['4','일과 재물','일하는 방식, 재물의 그릇, 돈이 새는 곳'],
-    ['5','마음과 몸','기질적 건강 주의점(진단 아님)과 생활 습관'],
-    ['6','지금의 시간','현재 대운·세운, 물어보신 것에 대한 답'],
-    ['7','앞으로 3년','해마다의 키워드·기회·주의·행동 지침'],
-    ['8','나에게 보내는 시 한 편','시낭송가가 직접 쓰는 마지막 한 장']
+    ['1','명식 요약과 시간 보정','태어난 날의 계절과 공기, 진태양시 보정, 네 기둥'],
+    ['2','일간과 오행의 균형','일간의 성정, 오행의 많고 적음, 뿌리(통근)'],
+    ['3','십성 구조와 격국','겉으로 드러난 나와 속의 나, 자리마다의 역할'],
+    ['4','강약·용신·조후','신강·신약의 근거, 용신과 희신·기신'],
+    ['5','합충과 신살','합·충·형·파, 12신살과 공망·귀인'],
+    ['6','타고난 기질과 적성·직업의 길','12운성의 리듬, 일하는 방식과 맞는 자리'],
+    ['7','재물과 인간관계','재성과 관성, 배우자 자리, 되풀이하는 습관'],
+    ['8','대운의 궤적','십 년 단위 흐름과 전환점'],
+    ['9','올해와 열두 달','세운·월운, 물어보신 질문에 대한 답'],
+    ['10','개운과 삶의 총평','살리는 기운과 생활 속 처방']
   ];
+  var POEM_CH = ['시','나에게 보내는 시 한 편','시낭송가가 직접 쓰는 마지막 한 장 — 10장과 별도로 1편'];
   function renderChapters(){
-    $('#chapterList').innerHTML = CHAPTERS.map(function(c){
+    var html = CHAPTERS.map(function(c){
       return '<div class="ch"><span class="n">'+c[0]+'</span><div><b>'+esc(c[1])+'</b><span>'+esc(c[2])+'</span></div></div>';
     }).join('');
+    html += '<div class="ch poem"><span class="n">'+POEM_CH[0]+'</span><div><b>'+esc(POEM_CH[1])+'</b><span>'+esc(POEM_CH[2])+'</span></div></div>';
+    $('#chapterList').innerHTML = html;
   }
   var SAMPLE_CELLS = [
     ['① 일간','丙火 — 겨울 물 위에 선 해'],
@@ -865,6 +1013,286 @@ footer a{color:var(--ink-2)}
     $('#summaryPreview').innerHTML = SAMPLE_CELLS.map(function(c){
       return '<dl class="cell"><dt>'+c[0]+'</dt><dd>'+esc(c[1])+'</dd></dl>';
     }).join('');
+  }
+
+  /* ── 무료 타로 (메이저 아르카나 22장) ── */
+  var TAROT = [
+    {r:'0',  name:'바보', en:'The Fool', m:'path',
+      up:{k:'새로운 시작', t:'아직 아무것도 정해지지 않은 자리에서 한 걸음을 내딛는 힘입니다. 짐이 가벼울수록 길이 열립니다.'},
+      rev:{k:'준비만 하는 시간', t:'시작을 미루고 준비만 하다 지치는 때입니다. 완벽한 준비보다 작은 걸음 하나가 먼저입니다.'}},
+    {r:'I',  name:'마법사', en:'The Magician', m:'infinity',
+      up:{k:'재주와 의지', t:'손에 쥔 도구가 이미 충분하다는 뜻입니다. 말과 행동이 한 방향을 보면 일이 움직입니다.'},
+      rev:{k:'말뿐인 계획', t:'계획이 말로만 남아 있습니다. 오늘 할 수 있는 한 가지만 골라 끝내 보세요.'}},
+    {r:'II', name:'여사제', en:'The High Priestess', m:'moon',
+      up:{k:'직관과 침묵', t:'겉으로 드러난 것보다 속이 먼저 알고 있습니다. 서두르지 않고 지켜볼 때 답이 옵니다.'},
+      rev:{k:'흔들리는 마음', t:'남의 말에 마음이 흔들리고 있습니다. 결정 전에 조용한 시간을 먼저 가지세요.'}},
+    {r:'III',name:'여황제', en:'The Empress', m:'wheat',
+      up:{k:'풍요와 돌봄', t:'돌보고 길러 내는 자리에서 결실이 옵니다. 몸과 마음에 좋은 것을 먼저 주세요.'},
+      rev:{k:'지나친 헌신', t:'주기만 하다 지쳤습니다. 받는 일도 연습해야 관계가 오래갑니다.'}},
+    {r:'IV', name:'황제', en:'The Emperor', m:'crown',
+      up:{k:'질서와 책임', t:'기준을 세우고 책임을 지는 자리입니다. 분명한 규칙이 사람을 편하게 합니다.'},
+      rev:{k:'지나친 고집', t:'통제가 지나쳐 숨이 막힙니다. 놓아도 되는 것을 하나 정해 보세요.'}},
+    {r:'V',  name:'교황', en:'The Hierophant', m:'key',
+      up:{k:'배움과 전통', t:'스승이나 오래된 방식이 길을 밝힙니다. 모르는 것을 배움을 청해 보세요.'},
+      rev:{k:'틀에 갇힘', t:'남의 기준에 나를 맞추고 있습니다. 내 방식으로 다시 물어도 괜찮습니다.'}},
+    {r:'VI', name:'연인', en:'The Lovers', m:'rings',
+      up:{k:'선택과 인연', t:'마음이 향하는 곳이 분명해지는 때입니다. 한 번의 선택이 관계를 깊게 합니다.'},
+      rev:{k:'미뤄 둔 결정', t:'두 마음 사이에서 결정을 미루고 있습니다. 무엇을 잃기 싫은지 먼저 보세요.'}},
+    {r:'VII',name:'전차', en:'The Chariot', m:'wheel',
+      up:{k:'전진과 집중', t:'두 힘을 나란히 묶으면 앞으로 나아갑니다. 목표를 하나로 좁히세요.'},
+      rev:{k:'흐려진 방향', t:'속도만 앞서고 방향이 흐립니다. 잠시 멈춰 지도를 펴 보세요.'}},
+    {r:'VIII',name:'힘', en:'Strength', m:'flame',
+      up:{k:'부드러운 힘', t:'세게 누르지 않아도 이깁니다. 다정함이 가장 오래가는 힘입니다.'},
+      rev:{k:'지친 의지', t:'참느라 지쳤습니다. 혼자 견디지 말고 손을 내미세요.'}},
+    {r:'IX', name:'은둔자', en:'The Hermit', m:'lantern',
+      up:{k:'성찰과 거리두기', t:'잠시 물러나 자신을 들여다볼 때입니다. 등불 하나면 충분합니다.'},
+      rev:{k:'문을 닫은 마음', t:'혼자가 편해져 문을 닫고 있습니다. 한 사람에게만이라도 말해 보세요.'}},
+    {r:'X',  name:'운명의 수레바퀴', en:'Wheel of Fortune', m:'wheel',
+      up:{k:'전환과 흐름', t:'흐름이 바뀌는 자리에 서 있습니다. 판을 새로 짜도 좋습니다.'},
+      rev:{k:'같은 자리에서 맴돌음', t:'바꿀 수 없는 것과 바꿀 것을 나눠 보세요. 그때 바퀴가 다시 돕니다.'}},
+    {r:'XI', name:'정의', en:'Justice', m:'scales',
+      up:{k:'균형과 책임', t:'셈이 맞아떨어지는 때입니다. 사실과 약속을 정확히 하세요.'},
+      rev:{k:'억울함', t:'억울함이 쌓였습니다. 감정보다 근거를 먼저 정리해 두세요.'}},
+    {r:'XII',name:'매달린 사람', en:'The Hanged Man', m:'triangle',
+      up:{k:'멈춤과 다른 시선', t:'멈춘 것이 손해가 아닙니다. 거꾸로 보면 답이 보입니다.'},
+      rev:{k:'버티기만 하는 시간', t:'버티기만 하다 시간이 갑니다. 지금 놓아야 할 것을 하나 정하세요.'}},
+    {r:'XIII',name:'죽음', en:'Death', m:'gate',
+      up:{k:'끝과 새 시작', t:'하나가 끝나야 다음이 옵니다. 끝을 인정하는 순간이 시작입니다.'},
+      rev:{k:'남은 미련', t:'끝난 일을 붙들고 있습니다. 장례를 치르듯 정리해 보세요.'}},
+    {r:'XIV',name:'절제', en:'Temperance', m:'cups',
+      up:{k:'조율과 회복', t:'두 가지를 섞어 알맞은 온도로 만드는 때입니다. 서두르지 마세요.'},
+      rev:{k:'기운 한쪽으로', t:'한쪽으로 기울었습니다. 잠과 식사부터 되돌려 보세요.'}},
+    {r:'XV', name:'악마', en:'The Devil', m:'chain',
+      up:{k:'집착과 유혹', t:'나를 묶고 있는 것을 정직하게 보는 자리입니다. 사슬은 생각보다 헐겁습니다.'},
+      rev:{k:'풀리는 사슬', t:'묶여 있던 것이 풀리기 시작합니다. 다시 잡지 않도록 거리를 두세요.'}},
+    {r:'XVI',name:'탑', en:'The Tower', m:'tower',
+      up:{k:'무너짐과 진실', t:'오래 쌓은 것이 흔들립니다. 무너진 자리만 다시 지으면 됩니다.'},
+      rev:{k:'남은 균열', t:'큰 붕괴는 피했지만 균열이 남았습니다. 작은 수리를 미루지 마세요.'}},
+    {r:'XVII',name:'별', en:'The Star', m:'star',
+      up:{k:'소망과 회복', t:'밤이 깊을수록 별이 밝습니다. 작은 소망을 적어 두세요.'},
+      rev:{k:'식은 기대', t:'기대가 식었습니다. 이루고 싶은 것을 다시 한 번 말해 보세요.'}},
+    {r:'XVIII',name:'달', en:'The Moon', m:'moon',
+      up:{k:'불안과 상상', t:'보이지 않는 것이 마음을 흔듭니다. 추측 대신 확인하세요.'},
+      rev:{k:'걷히는 안개', t:'안개가 걷히고 있습니다. 어제의 걱정이 오늘은 작아집니다.'}},
+    {r:'XIX',name:'태양', en:'The Sun', m:'sun',
+      up:{k:'기쁨과 성취', t:'숨기지 않아도 되는 자리입니다. 드러낼수록 좋습니다.'},
+      rev:{k:'조금 늦은 기쁨', t:'기쁨이 조금 늦어졌습니다. 작은 성취부터 축하해 보세요.'}},
+    {r:'XX', name:'심판', en:'Judgement', m:'trumpet',
+      up:{k:'부름과 재기', t:'지나간 일이 다시 문을 두드립니다. 대답하면 됩니다.'},
+      rev:{k:'망설이는 대답', t:'부름을 듣고도 돌아서고 있습니다. 두려움의 정체를 적어 보세요.'}},
+    {r:'XXI',name:'세계', en:'The World', m:'wreath',
+      up:{k:'완성과 확장', t:'한 바퀴를 다 돌았습니다. 마무리하고 다음으로 넘어가세요.'},
+      rev:{k:'남은 마지막 조각', t:'마지막 한 조각이 남았습니다. 아흔에서 멈춘 일을 확인해 보세요.'}}
+  ];
+
+  var MOTIFS = {
+    path:'<path d="M10 42c8-6 1-14 9-18s4-11 12-14"/><circle cx="32" cy="8" r="2.4"/>',
+    infinity:'<path d="M24 24c-4-7-14-7-14 0s10 7 14 0 14-7 14 0-10 7-14 0z"/>',
+    moon:'<path d="M30 7a17 17 0 1 0 0 34 13.5 13.5 0 1 1 0-34z"/>',
+    wheat:'<path d="M24 43V13"/><path d="M24 19c-6-1-9-6-9-10 5 0 9 3 9 10zM24 19c6-1 9-6 9-10-5 0-9 3-9 10z"/><path d="M24 29c-6-1-9-6-9-10 5 0 9 3 9 10zM24 29c6-1 9-6 9-10-5 0-9 3-9 10z"/>',
+    crown:'<path d="M10 35h28l-3-19-8 7-3-9-3 9-8-7z"/><path d="M11 39h26"/>',
+    key:'<circle cx="16" cy="16" r="6.5"/><path d="M20.5 20.5 36 36M30 30l4-4M34 34l4-4"/>',
+    rings:'<circle cx="19" cy="24" r="8.5"/><circle cx="29" cy="24" r="8.5"/>',
+    wheel:'<circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="2.6"/><path d="M24 9v30M9 24h30M13.4 13.4l21.2 21.2M34.6 13.4 13.4 34.6"/>',
+    flame:'<path d="M24 6c6 8 12 12 12 20a12 12 0 0 1-24 0c0-5 3-9 6-12 1 4 3 6 3 6 2-5 3-9 3-14z"/>',
+    lantern:'<path d="M18 13h12M20 13V8h8v5M16 21h16l-2 18H18z"/><path d="M24 21v18M16 30h16"/>',
+    scales:'<path d="M24 8v31M13 41h22"/><path d="M24 12 12 18M24 12l12 6"/><path d="M7 18h10l-5 8zM31 18h10l-5 8z"/>',
+    triangle:'<path d="M9 13h30L24 41z"/><path d="M24 13v28"/>',
+    gate:'<path d="M12 42V19l12-9 12 9v23"/><path d="M20 42V28h8v14"/><path d="M12 26h24"/>',
+    cups:'<path d="M11 15h9v7a4.5 4.5 0 0 1-9 0z"/><path d="M28 15h9v7a4.5 4.5 0 0 1-9 0z"/><path d="M15.5 30v6M32.5 30v6M11 38h9M28 38h9"/><path d="M22 21c4 5-1 9 3 13"/>',
+    chain:'<circle cx="16" cy="24" r="7"/><circle cx="32" cy="24" r="7"/><path d="M22 24h4"/>',
+    tower:'<path d="M15 43V23l9-15 9 15v20z"/><path d="M21 43V33h6v10"/><path d="M25 2v7M19 7l-6-4M31 7l6-4"/>',
+    star:'<path d="M24 6l4.2 12.2 12.8 1-9.7 8.3 3.1 12.5L24 33.1 13.6 40l3.1-12.5L7 19.2l12.8-1z"/>',
+    sun:'<circle cx="24" cy="24" r="9"/><path d="M24 4v5M24 39v5M4 24h5M39 24h5M10 10l3.6 3.6M34.4 34.4 38 38M38 10l-3.6 3.6M13.6 34.4 10 38"/>',
+    trumpet:'<path d="M7 22h10l13-8v20l-13-8H7z"/><path d="M31 14h6M31 34h6"/><path d="M13 26v9"/>',
+    wreath:'<circle cx="24" cy="24" r="14" stroke-dasharray="2.5 4"/><path d="M24 10c4 4 4 8 0 12-4-4-4-8 0-12zM24 26c4 4 4 8 0 12-4-4-4-8 0-12z"/>'
+  };
+
+  var TAROT_TOPICS = {
+    love:{ label:'연애·인연', q:'지금 내 곁의 인연이 어디로 흐르고 있을까',
+      advice:'인연은 붙잡는 일이 아니라 맞추어 가는 일입니다. 상대의 말보다 되풀이되는 행동을, 약속보다 표정을 보십시오. 오늘은 마음을 재촉하지 말고 한 번 더 들어 주는 쪽에 서 보시면 좋습니다.' },
+    money:{ label:'재물·일', q:'돈이 어디서 새고 어디로 들어오는지',
+      advice:'돈은 쫓을 때보다 막힌 곳을 터 줄 때 들어옵니다. 이번 주에 새는 곳 하나를 막고, 들어오는 길 하나를 넓혀 보십시오. 큰 결정은 입금과 지출을 종이에 적어 본 뒤에 하셔도 늦지 않습니다.' },
+    job:{ label:'직업·진로', q:'지금 하는 일이 나와 맞는지',
+      advice:'직업은 재능의 문제이기 전에 리듬의 문제입니다. 지금의 답답함이 능력의 부족인지 환경의 문제인지부터 가려 보십시오. 잘 맞는 자리에서는 같은 노력이 두 배로 남습니다.' },
+    people:{ label:'대인관계', q:'지금 내 사람들 사이의 거리',
+      advice:'사람 사이의 거리는 정직함에서 정해집니다. 서운함을 미루면 관계보다 내 마음이 먼저 상합니다. 오늘 한 사람에게만이라도 솔직한 한 문장을 건네 보십시오.' },
+    today:{ label:'오늘의 운', q:'오늘 하루의 흐름',
+      advice:'오늘은 크게 벌이기보다 흐름을 읽는 날입니다. 아침에 정한 한 가지를 저녁까지 지켜 보십시오. 작은 완성이 하루의 기세를 바꿉니다.' }
+  };
+
+  var tarot = { topic:'', spread:3, cards:[], flipped:0 };
+  var TAROT_POS3 = ['지금 마음','흐르는 흐름','무극 선인의 조언'];
+  var TAROT_POS1 = ['오늘의 한 장'];
+
+  function motif(key){
+    return '<svg class="t-ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false">'+(MOTIFS[key]||MOTIFS.star)+'</svg>';
+  }
+  function oriText(rev){ return rev ? '역방향' : '정방향'; }
+  /* 받침에 따라 이/가를 고르는 도우미 (조사만 돌려줍니다) */
+  function josaP(word, withFinal, withoutFinal){
+    var s = String(word||''), c = s.charCodeAt(s.length-1);
+    if(!s.length || c < 0xAC00 || c > 0xD7A3) return withoutFinal;
+    return (((c - 0xAC00) % 28) ? withFinal : withoutFinal);
+  }
+  function cardName(card){ return '「'+card.name+'」'; }
+  function tarotShuffle(){
+    var d=TAROT.slice();
+    for(var i=d.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=d[i]; d[i]=d[j]; d[j]=t; }
+    return d;
+  }
+  function tarotPositions(n){ return n===1 ? TAROT_POS1 : TAROT_POS3; }
+
+  function tarotDeal(){
+    if(!tarot.topic){ toast('먼저 고민의 분야를 골라 주세요'); return; }
+    var deck=tarotShuffle(), n=tarot.spread, pos=tarotPositions(n);
+    tarot.cards=[];
+    for(var i=0;i<n;i++){
+      // 덱에서 뽑되 같은 카드가 두 번 나오지 않도록
+      tarot.cards.push({ idx:TAROT.indexOf(deck[i]), rev:(Math.random()<0.35), pos:pos[i] });
+    }
+    tarot.flipped=0;
+    renderTarotBoard();
+    var rd=$('#tarotReading'); rd.hidden=true; rd.innerHTML='';
+    $('#tarotHint').textContent='카드 '+n+'장이 놓였습니다. 한 장씩 눌러 뒤집어 보세요.';
+    var b=$('#tarotBoard');
+    if(b && b.getBoundingClientRect){
+      var y=b.getBoundingClientRect().top+window.pageYOffset-92;
+      window.scrollTo({top:(y>0?y:0),behavior:'smooth'});
+    }
+  }
+
+  function renderTarotBoard(){
+    var n=tarot.cards.length, html='';
+    for(var i=0;i<n;i++){
+      var c=tarot.cards[i], card=TAROT[c.idx], oi=c.rev?card.rev:card.up;
+      html += '<button class="tcard'+(c.rev?' is-rev':'')+'" type="button" data-k="'+i+'" aria-pressed="false" '
+        + 'aria-label="'+esc(c.pos)+' 자리, 카드를 눌러 뒤집어 보기">'
+        + '<span class="tcard-in">'
+        + '<span class="tface tback"><span class="seal">命</span><span class="bt">HANSOL TAROT</span></span>'
+        + '<span class="tface tfront"><span class="num">'+card.r+'</span>'
+        + '<span class="ori">'+oriText(c.rev)+'</span>'
+        + motif(card.m)
+        + '<span class="nm">'+esc(card.name)+'</span>'
+        + '<span class="en">'+esc(card.en)+'</span>'
+        + '<span class="kw">'+esc(oi.k)+'</span></span>'
+        + '</span>'
+        + '<span class="t-tap">눌러서 뒤집기</span>'
+        + '</button>';
+    }
+    $('#tarotBoard').innerHTML=html;
+  }
+
+  function tarotFlip(btn){
+    if(!btn || btn.classList.contains('flipped')) return;
+    btn.classList.add('flipped');
+    btn.setAttribute('aria-pressed','true');
+    tarot.flipped++;
+    var total=tarot.cards.length;
+    if(tarot.flipped>=total){
+      $('#tarotHint').textContent = total===3 ? '세 장이 모두 열렸습니다. 아래 해설을 읽어 보세요.' : '카드가 열렸습니다. 아래 해설을 읽어 보세요.';
+      setTimeout(renderTarotReading, 380);
+    }else{
+      $('#tarotHint').textContent='남은 카드를 눌러 계속 뒤집어 보세요. ('+tarot.flipped+'/'+total+')';
+    }
+  }
+
+  function renderTarotReading(){
+    var n=tarot.cards.length;
+    var tops=TAROT_TOPICS[tarot.topic]||TAROT_TOPICS.today;
+    var upCount=0, i;
+    for(i=0;i<n;i++){ if(!tarot.cards[i].rev) upCount++; }
+
+    var html='<div class="read-head"><span class="badge">'+esc(tops.label)+'</span>'
+      + '<span class="badge q">'+esc(tops.q)+'</span>'
+      + '<span class="badge q">'+(n===3?'세 장':'한 장')+'</span></div><div class="read-grid">';
+    for(i=0;i<n;i++){
+      var c=tarot.cards[i], card=TAROT[c.idx], o=c.rev?card.rev:card.up;
+      html += '<div class="rc"><span class="pos">'+esc(c.pos)+'</span>'
+        + '<div class="rnm">'+esc(card.name)+'</div>'
+        + '<span class="rori">'+card.r+' · '+oriText(c.rev)+' · '+esc(card.en)+'</span>'
+        + '<div class="rkw">'+esc(o.k)+'</div><p>'+esc(o.t)+'</p></div>';
+    }
+    html += '</div>';
+
+    var sum='';
+    var c1=tarot.cards[0], k1=TAROT[c1.idx], o1=c1.rev?k1.rev:k1.up;
+    if(n===3){
+      var c2=tarot.cards[1], k2=TAROT[c2.idx], o2=c2.rev?k2.rev:k2.up;
+      var c3=tarot.cards[2], k3=TAROT[c3.idx], o3=c3.rev?k3.rev:k3.up;
+      sum = '첫 장인 지금 마음에는 ' + cardName(k1) + josaP(k1.name,'이','가') + ' ' + oriText(c1.rev) + '으로 놓였습니다. '
+        + o1.k + ' — ' + o1.t + ' 흐르는 흐름에는 ' + cardName(k2) + josaP(k2.name,'이','가') + ' ' + oriText(c2.rev) + '으로, '
+        + o2.k + '의 결입니다. ' + o2.t + ' 마지막 조언의 자리에는 ' + cardName(k3) + josaP(k3.name,'이','가') + ' ' + oriText(c3.rev) + '으로 섰습니다. '
+        + o3.k + ' — ' + o3.t;
+      if(upCount===3){
+        sum += ' 세 장이 모두 바로 서 있습니다. 지금은 흐름을 믿고 한 걸음 나아가도 좋은 때입니다. 다만 서두르면 좋은 카드도 힘을 잃으니 순서를 지켜 가십시오.';
+      }else if(upCount===0){
+        sum += ' 세 장이 모두 거꾸로 섰습니다. 새로 벌이기보다 정리하고 쉬어 가라는 신호입니다. 오늘은 잠과 식사, 미뤄 둔 작은 일 하나로 충분합니다.';
+      }else{
+        sum += ' 바로 선 카드가 ' + upCount + '장, 거꾸로 선 카드가 ' + (3-upCount) + '장입니다. 마음은 앞서는데 힘이 따라 주지 않거나 그 반대인 때이니, 속도를 반쯤 늦추면 길이 보입니다.';
+      }
+      sum += c3.rev ? ' 조언의 카드가 거꾸로 섰으니 지금 하실 일은 더 하기가 아니라 덜어내기입니다.'
+                    : ' 조언의 카드가 바로 섰으니 마음에 둔 그 한 가지는 미루지 마십시오.';
+    }else{
+      sum = '오늘의 자리에 ' + cardName(k1) + josaP(k1.name,'이','가') + ' ' + oriText(c1.rev) + '으로 섰습니다. ' + o1.k + ' — ' + o1.t;
+      sum += c1.rev ? ' 오늘은 밀어붙이기보다 안으로 돌아보는 편이 좋습니다. 거꾸로 선 카드는 늦춤이 손해가 아니라는 말을 합니다.'
+                    : ' 오늘은 마음먹은 방향으로 움직여도 좋습니다. 다만 한 번에 다 하지 말고 하나씩 마무리하십시오.';
+    }
+
+    html += '<div class="read-sum"><p class="sum-t">' + (n===3?'세 장을 겹쳐 읽으면':'한 장이 남긴 말') + '</p>'
+      + '<p class="body">' + esc(sum) + '</p>'
+      + '<div class="master-say"><span class="who">명리 상담 마스터 무극 선인의 한마디</span>'
+      + '<p>' + esc(tops.advice) + '</p></div></div>';
+
+    html += '<div class="read-cta">'
+      + '<p class="lead">타로가 짚어 준 자리를 생년월일시로 더 정확히 읽어 드립니다.</p>'
+      + '<a class="btn btn-gold" href="#apply">AI 사주리포트 신청 · 30,000원</a>'
+      + '<a class="btn btn-ghost" href="#product">1:1 화상 마스터 상담 8종 · 100,000원</a>'
+      + '<p class="note">리포트는 10장 서사형 MECE 분석 A4 30쪽, 상담은 1:1 Zoom 8종 10만 원 균일(전화 예약)입니다.</p>'
+      + '</div>';
+
+    var rd=$('#tarotReading');
+    rd.innerHTML=html;
+    rd.hidden=false;
+    if(rd.scrollIntoView){
+      var y=rd.getBoundingClientRect().top+window.pageYOffset-88;
+      window.scrollTo({top:(y>0?y:0),behavior:'smooth'});
+    }
+  }
+
+  function bindTarot(){
+    var topics=$$('#tarotTopics .t-topic');
+    topics.forEach(function(b){
+      b.addEventListener('click', function(){
+        tarot.topic=b.getAttribute('data-topic');
+        topics.forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+        $('#tarotDeal').disabled=false;
+        $('#tarotHint').textContent=TAROT_TOPICS[tarot.topic].label+'에 대한 카드를 뽑아 보겠습니다. ‘카드 섞어 뽑기’를 눌러 주세요.';
+      });
+    });
+    $$('.t-mode').forEach(function(b){
+      b.addEventListener('click', function(){
+        tarot.spread=Number(b.getAttribute('data-spread'));
+        $$('.t-mode').forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+        $('#tarotBoard').innerHTML='';
+        var rd=$('#tarotReading'); rd.hidden=true; rd.innerHTML='';
+        $('#tarotDeal').disabled=!tarot.topic;
+        $('#tarotHint').textContent=tarot.topic ? '장수를 바꿨습니다. 다시 뽑아 주세요.' : '분야를 하나 고르면 카드를 뽑을 수 있습니다.';
+      });
+    });
+    $('#tarotDeal').addEventListener('click', tarotDeal);
+    $('#tarotReset').addEventListener('click', function(){
+      tarot.topic=''; tarot.cards=[]; tarot.flipped=0;
+      topics.forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      $('#tarotBoard').innerHTML='';
+      var rd=$('#tarotReading'); rd.hidden=true; rd.innerHTML='';
+      $('#tarotDeal').disabled=true;
+      $('#tarotHint').textContent='분야를 하나 고르면 카드를 뽑을 수 있습니다. 세 장은 마음·흐름·조언, 한 장은 오늘의 카드로 읽습니다.';
+    });
+    $('#tarotBoard').addEventListener('click', function(e){
+      var b=e.target && e.target.closest ? e.target.closest('.tcard') : null;
+      if(b) tarotFlip(b);
+    });
   }
 
   /* ── 출생지: 시·도 → 시·군·구 (경도 보정용 전국 목록) ── */
@@ -1369,6 +1797,7 @@ footer a{color:var(--ink-2)}
     syncTime();
     collectSrc();
     updateDemoBanner();
+    bindTarot();
     var bd=$('#f_birth');
     bd.max=todayStr(); bd.min='1900-01-01';
     bind();
