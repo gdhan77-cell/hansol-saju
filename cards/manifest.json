@@ -1,0 +1,266 @@
+{
+ "00": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg",
+  "orig": [
+   1144,
+   1919
+  ],
+  "out": [
+   393,
+   660
+  ],
+  "bytes": 80054
+ },
+ "01": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg",
+  "orig": [
+   1108,
+   1920
+  ],
+  "out": [
+   381,
+   660
+  ],
+  "bytes": 76934
+ },
+ "02": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg",
+  "orig": [
+   1117,
+   1919
+  ],
+  "out": [
+   384,
+   660
+  ],
+  "bytes": 86714
+ },
+ "03": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg",
+  "orig": [
+   1123,
+   1920
+  ],
+  "out": [
+   386,
+   660
+  ],
+  "bytes": 99100
+ },
+ "04": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg",
+  "orig": [
+   1117,
+   1919
+  ],
+  "out": [
+   384,
+   660
+  ],
+  "bytes": 93668
+ },
+ "05": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg",
+  "orig": [
+   1114,
+   1919
+  ],
+  "out": [
+   383,
+   660
+  ],
+  "bytes": 93878
+ },
+ "06": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg",
+  "orig": [
+   1122,
+   1920
+  ],
+  "out": [
+   386,
+   660
+  ],
+  "bytes": 101296
+ },
+ "07": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg",
+  "orig": [
+   1111,
+   1919
+  ],
+  "out": [
+   382,
+   660
+  ],
+  "bytes": 87762
+ },
+ "08": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg",
+  "orig": [
+   1114,
+   1919
+  ],
+  "out": [
+   383,
+   660
+  ],
+  "bytes": 75730
+ },
+ "09": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg",
+  "orig": [
+   1123,
+   1920
+  ],
+  "out": [
+   386,
+   660
+  ],
+  "bytes": 56876
+ },
+ "10": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg",
+  "orig": [
+   1104,
+   1920
+  ],
+  "out": [
+   380,
+   660
+  ],
+  "bytes": 91702
+ },
+ "11": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg",
+  "orig": [
+   1114,
+   1919
+  ],
+  "out": [
+   383,
+   660
+  ],
+  "bytes": 92188
+ },
+ "12": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg",
+  "orig": [
+   1092,
+   1920
+  ],
+  "out": [
+   375,
+   660
+  ],
+  "bytes": 87138
+ },
+ "13": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg",
+  "orig": [
+   1111,
+   1919
+  ],
+  "out": [
+   382,
+   660
+  ],
+  "bytes": 95544
+ },
+ "14": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg",
+  "orig": [
+   1106,
+   1920
+  ],
+  "out": [
+   380,
+   660
+  ],
+  "bytes": 100854
+ },
+ "15": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg",
+  "orig": [
+   1090,
+   1920
+  ],
+  "out": [
+   375,
+   660
+  ],
+  "bytes": 72974
+ },
+ "16": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg",
+  "orig": [
+   1109,
+   1920
+  ],
+  "out": [
+   381,
+   660
+  ],
+  "bytes": 71734
+ },
+ "17": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg",
+  "orig": [
+   1114,
+   1919
+  ],
+  "out": [
+   383,
+   660
+  ],
+  "bytes": 79778
+ },
+ "18": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg",
+  "orig": [
+   1111,
+   1919
+  ],
+  "out": [
+   382,
+   660
+  ],
+  "bytes": 82596
+ },
+ "19": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg",
+  "orig": [
+   1114,
+   1919
+  ],
+  "out": [
+   383,
+   660
+  ],
+  "bytes": 96938
+ },
+ "20": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg",
+  "orig": [
+   1115,
+   1920
+  ],
+  "out": [
+   383,
+   660
+  ],
+  "bytes": 94662
+ },
+ "21": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg",
+  "orig": [
+   1112,
+   1920
+  ],
+  "out": [
+   382,
+   660
+  ],
+  "bytes": 93410
+ }
+}

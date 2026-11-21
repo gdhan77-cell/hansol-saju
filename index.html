@@ -330,7 +330,8 @@ footer a{color:var(--ink-2)}
 .t-deal[disabled]{opacity:.45;box-shadow:none;cursor:default}
 .t-reset{min-height:40px;padding:0 10px;font-size:13px;color:var(--muted);text-decoration:underline}
 .t-hint{margin:14px 0 0;font-size:13.5px;color:var(--muted);min-height:1.6em;position:relative}
-.t-board{display:flex;justify-content:center;align-items:flex-start;gap:clamp(8px,3.4vw,22px);margin:18px 0 30px}
+.t-board{display:flex;justify-content:center;align-items:flex-start;gap:clamp(8px,3.4vw,22px);margin:18px 0 54px}
+.t-board[data-n="1"] .tcard{width:clamp(118px,42vw,196px)}
 .tcard{position:relative;appearance:none;border:0;background:none;padding:0;width:clamp(88px,27vw,148px);aspect-ratio:2/3.15;
   perspective:900px;cursor:pointer;border-radius:14px;transition:transform .25s;animation:cardIn .45s both}
 @keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
@@ -347,10 +348,21 @@ footer a{color:var(--ink-2)}
 .tback .seal{width:44%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(230,184,92,.62);display:grid;place-items:center;
   font-family:var(--serif);font-size:clamp(17px,4.6vw,25px);background:rgba(230,184,92,.10)}
 .tback .bt{font-size:9px;letter-spacing:.16em;color:rgba(230,184,92,.72);margin-top:10px;text-align:center}
-.tfront{transform:rotateY(180deg);border:1px solid rgba(230,184,92,.6);color:var(--gold);padding:9% 6%;
+.tfront{transform:rotateY(180deg);border:1px solid rgba(230,184,92,.6);color:var(--gold);padding:3px;
   background:radial-gradient(circle at 50% 32%, #3b3021 0%, #251e16 58%, #191410 100%)}
-.tfront .num{position:absolute;top:6px;left:9px;font-family:var(--serif);font-size:11px;color:rgba(230,184,92,.8);letter-spacing:.06em}
-.tfront .ori{position:absolute;top:6px;right:8px;font-size:8.5px;letter-spacing:.02em;color:rgba(250,246,238,.72)}
+.tfront::after{content:"";position:absolute;inset:0;border-radius:13px;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(230,184,92,.32)}
+.tart{position:absolute;inset:3px;display:block;overflow:hidden;border-radius:12px;background:#14100a}
+.tart img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.tcard.is-rev .tart img{transform:rotate(180deg)}
+.t-fb{position:absolute;inset:3px;display:none;flex-direction:column;align-items:center;justify-content:center;padding:9% 6%;border-radius:12px}
+.tfront.noart .tart{display:none}
+.tfront.noart .t-fb{display:flex}
+.tfront .num{position:absolute;top:6px;left:6px;z-index:2;font-family:var(--serif);font-size:11px;color:#f7f1e2;
+  letter-spacing:.06em;background:rgba(16,13,10,.72);border-radius:6px;padding:1px 6px}
+.tfront .ori{position:absolute;top:6px;right:6px;z-index:2;font-size:9.5px;letter-spacing:.02em;color:#f7f1e2;
+  background:rgba(16,13,10,.72);border-radius:6px;padding:1px 6px}
 .t-ico{width:48%;height:auto;stroke:var(--gold);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
 .tcard.is-rev .t-ico{transform:rotate(180deg)}
 .tfront .nm{font-family:var(--serif);font-size:clamp(12.5px,3.3vw,16px);color:#f7f1e2;margin-top:8px;text-align:center;line-height:1.25}
@@ -358,6 +370,16 @@ footer a{color:var(--ink-2)}
 .tfront .kw{font-size:9.5px;color:rgba(250,246,238,.82);margin-top:6px;text-align:center;line-height:1.3}
 .t-tap{position:absolute;left:0;right:0;bottom:-19px;font-size:10.5px;color:var(--gold-2);letter-spacing:.04em;text-align:center;opacity:.9;transition:opacity .2s}
 .tcard.flipped .t-tap{opacity:0}
+.t-cap{position:absolute;left:-8px;right:-8px;bottom:-21px;font-size:clamp(9.5px,2.7vw,11px);line-height:1.35;color:var(--ink-2);
+  letter-spacing:-.01em;text-align:center;opacity:0;transition:opacity .3s .25s}
+.t-cap b{font-family:var(--serif);font-weight:400;color:var(--ink)}
+.t-cap i{font-style:normal;color:var(--gold-2)}
+.tcard.flipped .t-cap{opacity:1}
+.t-credit{margin:2px 0 0;font-size:11px;color:rgba(200,193,180,.5);line-height:1.6}
+@media(max-width:520px){
+  .tfront .num{display:none}
+  .tfront .ori{font-size:9px;padding:1px 5px;top:5px;right:5px}
+}
 .t-reading{margin-top:20px;border-top:1px solid var(--line-2);padding-top:20px}
 .read-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
 .read-head .badge{border:1px solid var(--line);background:var(--gold-soft);color:var(--gold);border-radius:999px;padding:4px 11px;font-size:12.5px}
@@ -484,6 +506,7 @@ footer a{color:var(--ink-2)}
 
         <p class="t-hint" id="tarotHint">분야를 고르고 카드를 뽑아 보세요. 세 장은 마음·흐름·조언의 자리로, 한 장은 오늘의 카드로 읽습니다.</p>
         <div class="t-board" id="tarotBoard" aria-live="polite"></div>
+        <p class="t-credit">카드 그림: Rider-Waite-Smith 타로 (1909, 퍼블릭 도메인 · Pamela Colman Smith)</p>
         <div class="t-reading" id="tarotReading" hidden></div>
         <p class="t-disclaimer">타로는 재미와 성찰을 위한 도구입니다. 미래를 단정하지 않으며, 의료·법률·투자 같은 중요한 판단의 근거로 삼지 마세요. 깊은 해석이 필요하시면 아래 사주리포트나 마스터 상담으로 이어 가실 수 있습니다.</p>
       </div>
@@ -1166,20 +1189,29 @@ footer a{color:var(--ink-2)}
     var n=tarot.cards.length, html='';
     for(var i=0;i<n;i++){
       var c=tarot.cards[i], card=TAROT[c.idx], oi=c.rev?card.rev:card.up;
+      var file='./cards/'+(c.idx<10?'0':'')+c.idx+'.webp';
+      var dir=c.rev?'역방향':'정방향';
       html += '<button class="tcard'+(c.rev?' is-rev':'')+'" type="button" data-k="'+i+'" aria-pressed="false" '
         + 'aria-label="'+esc(c.pos)+' 자리, 카드를 눌러 뒤집어 보기">'
         + '<span class="tcard-in">'
         + '<span class="tface tback"><span class="seal">命</span><span class="bt">HANSOL TAROT</span></span>'
-        + '<span class="tface tfront"><span class="num">'+card.r+'</span>'
+        + '<span class="tface tfront">'
+        + '<span class="tart"><img src="'+file+'" alt="유니버설 웨이트 타로 '
+          + esc(card.name)+' ('+esc(card.en)+') '+dir+'" loading="eager" decoding="async" '
+          + 'onerror="this.closest(\'.tfront\').classList.add(\'noart\')"></span>'
+        + '<span class="t-fb">'+motif(card.m)
+        +   '<span class="nm">'+esc(card.name)+'</span>'
+        +   '<span class="en">'+esc(card.en)+'</span>'
+        +   '<span class="kw">'+esc(oi.k)+'</span></span>'
+        + '<span class="num">'+card.r+'</span>'
         + '<span class="ori">'+oriText(c.rev)+'</span>'
-        + motif(card.m)
-        + '<span class="nm">'+esc(card.name)+'</span>'
-        + '<span class="en">'+esc(card.en)+'</span>'
-        + '<span class="kw">'+esc(oi.k)+'</span></span>'
+        + '</span>'
         + '</span>'
         + '<span class="t-tap">눌러서 뒤집기</span>'
+        + '<span class="t-cap"><b>'+esc(card.name)+'</b>'+(c.rev?' <i>· 역방향</i>':'')+'</span>'
         + '</button>';
     }
+    $('#tarotBoard').setAttribute('data-n', n);
     $('#tarotBoard').innerHTML=html;
   }
 

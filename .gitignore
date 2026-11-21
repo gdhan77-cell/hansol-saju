@@ -1,0 +1,5 @@
+shots/
+shots_live/
+shots_cards/
+test_*.py
+fetch_cards.py
