@@ -470,7 +470,7 @@ footer a{color:var(--ink-2)}
           <circle class="core" cx="150" cy="150" r="46"/>
           <text class="core-t" x="150" y="150" text-anchor="middle" dominant-baseline="central">命</text>
         </svg>
-        <p class="dial-caption">천간 열 · 지지 열둘 · 여덟 글자</p>
+        <p class="dial-caption">천간(정기) 열둘 · 지지 열둘 · 여덟 글자</p>
       </div>
     </div>
   </section>
@@ -806,8 +806,8 @@ footer a{color:var(--ink-2)}
         </fieldset>
 
         <div id="submitError" class="card pad" role="alert" hidden>
-          <p style="color:var(--danger);font-weight:700;margin-bottom:8px">접수되지 않았습니다.</p>
-          <p style="font-size:14.5px;color:var(--ink-2)">잠시 후 다시 시도하시거나, 아래 번호로 전화 주시면 바로 접수해 드립니다.</p>
+          <p id="submitErrTitle" style="color:var(--danger);font-weight:700;margin-bottom:8px">접수되지 않았습니다.</p>
+          <p id="submitErrHelp" style="font-size:14.5px;color:var(--ink-2)">잠시 후 다시 시도하시거나, 아래 번호로 전화 주시면 바로 접수해 드립니다.</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
             <button class="btn btn-ghost small" type="button" id="retryBtn">다시 시도</button>
             <a class="btn btn-gold small" href="tel:01087109935">☎ 010-8710-9935 전화 신청</a>
@@ -823,8 +823,8 @@ footer a{color:var(--ink-2)}
 <div class="wrap" id="screenDone">
   <div class="done-head">
     <div class="ok" aria-hidden="true">✓</div>
-    <h2>신청이 접수되었습니다</h2>
-    <p>아래 계좌로 입금하시면 분석을 시작합니다.</p>
+    <h2 id="doneTitle">신청이 접수되었습니다</h2>
+    <p id="doneSub">아래 계좌로 입금하시면 분석을 시작합니다.</p>
     <div class="code-box">
       <span class="k">접수번호</span><b id="doneCode">HS-000000-000</b>
       <button class="copybtn" type="button" data-copy="code">복사</button>
@@ -853,7 +853,7 @@ footer a{color:var(--ink-2)}
       <li><span class="num">3</span><span>AI 초안을 제가 직접 읽고 문장을 고친 뒤에 보냅니다. 그래서 하루이틀이 걸립니다.</span></li>
       <li><span class="num">4</span><span><b>신청서 작성 후 3일 이내</b>에 입금이 없으면 착수하지 않고 신청이 자동으로 취소·종료됩니다. 입금 기한은 <b id="doneDeadline">-</b>입니다. 다시 신청하시면 됩니다.</span></li>
     </ul>
-    <p class="note" style="margin-top:14px">같은 내용을 <b id="doneEmail">-</b>로 보내 드렸습니다.
+    <p class="note" id="doneMailNote" style="margin-top:14px">같은 내용을 <b id="doneEmail">-</b>로 보내 드렸습니다.
       메일이 보이지 않으면 스팸함을 한 번 확인해 주세요.</p>
     <div class="done-actions">
       <button class="btn btn-ghost small" type="button" id="resendMail">메일 다시 받기</button>
@@ -1556,7 +1556,8 @@ footer a{color:var(--ink-2)}
 
   function post(url, body){
     var ctl = (typeof AbortController!=='undefined') ? new AbortController() : null;
-    var t = setTimeout(function(){ if(ctl) ctl.abort(); }, 20000);
+    /* Apps Script 콜드 스타트 + 메일 발송까지 기다린다 (짧으면 실제로는 접수된 신청이 실패로 보인다) */
+    var t = setTimeout(function(){ if(ctl) ctl.abort(); }, 35000);
     return fetch(url, {
       method:'POST',
       headers:{ 'Content-Type':'text/plain;charset=utf-8' },
@@ -1571,11 +1572,43 @@ footer a{color:var(--ink-2)}
     }).catch(function(e){ clearTimeout(t); throw e; });
   }
 
-  function showSubmitError(msg){
-    var box=$('#submitError'); box.style.display='block';
-    $('#submitErrDetail').textContent = msg?('기술 정보: '+msg):'';
+  /* 서버가 돌려주는 오류 코드를 손님에게 보여 줄 한국어로 */
+  var SERVER_MSG = {
+    VALIDATION_FAILED:'입력하신 내용에 확인이 필요한 항목이 있습니다. 각 단계의 안내를 다시 봐 주세요.',
+    ENGINE_OUT_OF_RANGE:'1900년 이후 출생만 분석할 수 있습니다.',
+    INVALID_LUNAR_DATE:'음력 날짜를 다시 확인해 주세요.',
+    DUPLICATE_APPLICATION:'이미 접수된 신청이 있습니다.',
+    NOT_FOUND:'접수 내역을 찾지 못했습니다.'
+  };
+
+  function showSubmitError(msg, opts){
+    opts = opts || {};
+    var box=$('#submitError'); if(!box) return;
+    box.hidden=false; box.removeAttribute('hidden'); box.style.display='block';
+    var t=$('#submitErrTitle'), h=$('#submitErrHelp');
+    if(t) t.textContent = opts.title || '접수되지 않았습니다.';
+    if(h) h.textContent = opts.help || '잠시 후 다시 시도하시거나, 아래 번호로 전화 주시면 바로 접수해 드립니다.';
+    var d=$('#submitErrDetail');
+    if(d) d.textContent = opts.detail || (msg?('기술 정보: '+msg):'');
+    if(box.scrollIntoView){ box.scrollIntoView({block:'center',behavior:'smooth'}); }
   }
-  function hideSubmitError(){ var b=$('#submitError'); if(b) b.style.display='none'; }
+  function hideSubmitError(){
+    var b=$('#submitError'); if(!b) return;
+    b.hidden=true; b.style.display='none';
+  }
+
+  /* 검증 실패 시 첫 번째 오류 문구가 화면에 보이도록 스크롤·포커스 */
+  function focusFirstErr(step){
+    var scope=$('#step'+step) || document;
+    var errs=$$('.err', scope).filter(function(p){ return String(p.textContent||'').trim()!==''; });
+    if(!errs.length) return;
+    var target=errs[0];
+    var y=target.getBoundingClientRect().top+window.pageYOffset-110;
+    if(window.scrollTo) window.scrollTo({top:(y<0?0:y),behavior:'smooth'});
+    var f=target.previousElementSibling;
+    while(f && !/^(INPUT|SELECT|TEXTAREA)$/.test(f.tagName)) f=f.previousElementSibling;
+    if(f && f.focus){ try{ f.focus({preventScroll:true}); }catch(e){ try{ f.focus(); }catch(e2){} } }
+  }
 
   function busy(on){
     state.submitting=on;
@@ -1586,9 +1619,9 @@ footer a{color:var(--ink-2)}
 
   function submit(){
     if(state.submitting) return;
-    if(!validateStep1()){ showStep(1); return; }
-    if(!validateStep2()){ showStep(2); return; }
-    if(!validateStep3()) return;
+    if(!validateStep1()){ showStep(1); focusFirstErr(1); return; }
+    if(!validateStep2()){ showStep(2); focusFirstErr(2); return; }
+    if(!validateStep3()){ focusFirstErr(3); return; }
     if(val('f_hp')) return; /* 허니팟 */
     var data=collect();
     busy(true); hideSubmitError();
@@ -1607,37 +1640,73 @@ footer a{color:var(--ink-2)}
     if(!cfg.endpoint){ doneLocal(); return; }
 
     post(cfg.endpoint, { action:'apply', payload:data }).then(function(res){
-      if(!res || res.ok!==true || !res.code){ throw new Error((res&&res.error)||'저장 실패'); }
-      showDone({ code:res.code, data:data, remote:true, emailSent: !!res.email_sent });
-      busy(false);
+      if(res && res.ok===true && res.code){
+        showDone({ code:res.code, data:data, remote:true, emailSent: !!res.email_sent });
+        busy(false);
+        return;
+      }
+      /* 같은 이메일로 이미 접수된 신청 — 실패가 아니라 '기존 접수'를 안내한다 */
+      if(res && res.error==='DUPLICATE_APPLICATION' && res.code){
+        busy(false);
+        showDone({ code:res.code, data:data, remote:true, emailSent:false, duplicate:true });
+        return;
+      }
+      var code=(res&&res.error)||'';
+      var msg=(res&&res.message)||SERVER_MSG[code]||code||'저장 실패';
+      var err=new Error(msg); err.code=code; err.res=res;
+      throw err;
     }).catch(function(e){
       busy(false);
-      showSubmitError(e && e.message ? e.message : String(e));
+      var aborted=(e && (e.name==='AbortError' || /abort/i.test(String(e.message||''))));
+      if(aborted){
+        showSubmitError('TIMEOUT', {
+          title:'서버 응답이 늦어 접수 확인을 하지 못했습니다.',
+          help:'신청이 접수되었을 수 있습니다. 바로 다시 누르지 마시고, 메일함에 계좌 안내가 왔는지 먼저 확인해 주세요. 메일이 없으면 1~2분 뒤 다시 시도하시거나 010-8710-9935로 전화 주세요.',
+          detail:'응답 시간 초과(35초)'
+        });
+        return;
+      }
+      showSubmitError(e && e.code ? e.code : (e && e.message ? e.message : String(e)), {
+        detail: (e && e.code && e.message) ? e.message : ''
+      });
     });
   }
 
   function showDone(info){
     state.last=info;
+    var dup=!!info.duplicate;
     $('#doneCode').textContent=info.code;
     $('#doneAmount').textContent=nf(PRICE)+'원';
     $('#doneAccount').textContent=BANK.account;
     $('#doneDepositor').textContent=(info.data&&info.data.depositor_name)||'-';
     $('#doneEmail').textContent=(info.data&&info.data.email)||'-';
     $('#doneEta').textContent=fmtDate(addBizDays(new Date(),2));
+    var dt=$('#doneTitle'), ds=$('#doneSub');
+    if(dt) dt.textContent = dup ? '이미 접수된 신청이 있습니다' : '신청이 접수되었습니다';
+    if(ds) ds.textContent = dup
+      ? '같은 이메일로 접수된 신청이 그대로 있습니다. 접수번호는 아래와 같고, 입금 계좌도 같습니다.'
+      : '아래 계좌로 입금하시면 분석을 시작합니다.';
+    var mn=$('#doneMailNote');
+    if(mn) mn.style.display = dup ? 'none' : 'block';
     var dl=new Date(); dl.setDate(dl.getDate()+3);
     var dlEl=$('#doneDeadline'); if(dlEl) dlEl.textContent=fmtDate(dl);
     var dlNote=$('#doneDeadlineNote');
-    if(dlNote) dlNote.textContent='입금 기한은 '+fmtDate(dl)+'입니다. 신청서 작성 후 3일 이내에 입금하지 않으면 착수하지 않고 신청이 자동으로 취소됩니다.';
-    $('#doneDemo').style.display = info.remote ? 'none' : 'inline-flex';
-    if(info.remote && info.emailSent===false){
+    if(dlNote) dlNote.textContent = dup
+      ? '이미 접수된 신청입니다. 아직 입금하지 않으셨다면 입금 기한('+fmtDate(dl)+') 안에 입금해 주시면 됩니다. 접수번호를 메모해 두시면 확인이 빠릅니다.'
+      : '입금 기한은 '+fmtDate(dl)+'입니다. 신청서 작성 후 3일 이내에 입금하지 않으면 착수하지 않고 신청이 자동으로 취소됩니다.';
+    $('#doneDemo').style.display='none';
+    if(!dup && info.remote && info.emailSent===false){
       $('#doneDemo').style.display='inline-flex';
       $('#doneDemo').textContent='메일 발송이 지연되었습니다 — 아래 계좌 정보를 저장해 두세요';
+    } else if(!dup && !info.remote){
+      $('#doneDemo').style.display='inline-flex';
+      $('#doneDemo').textContent='체험 모드 — 실제 접수·메일 발송은 되지 않았습니다';
     }
     $('#screenApply').style.display='none';
     $('#screenDone').style.display='block';
     window.scrollTo({top:0,behavior:'smooth'});
     refreshLocalList();
-    toast('접수번호 '+info.code+'로 접수되었습니다');
+    toast(dup ? ('이미 접수된 신청입니다 · 접수번호 '+info.code) : ('접수번호 '+info.code+'로 접수되었습니다'));
   }
 
   /* ── 복사 ── */
@@ -1722,8 +1791,8 @@ footer a{color:var(--ink-2)}
     $$('[data-next]').forEach(function(b){
       b.addEventListener('click', function(){
         var n=Number(b.getAttribute('data-next'));
-        if(n===2 && !validateStep1()) return;
-        if(n===3 && !validateStep2()) return;
+        if(n===2 && !validateStep1()){ focusFirstErr(1); return; }
+        if(n===3 && !validateStep2()){ focusFirstErr(2); return; }
         showStep(n);
       });
     });
