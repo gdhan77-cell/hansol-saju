@@ -3,3 +3,4 @@ shots_live/
 shots_cards/
 test_*.py
 fetch_cards.py
+shots_live_cards/
