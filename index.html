@@ -969,8 +969,10 @@ footer a{color:var(--ink-2)}
   /* ── 다이얼 ── */
   function buildDial(){
     var NS='http://www.w3.org/2000/svg';
-    var branches=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
-    var stems=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+    /* 전통 명리 방위도: 위=정남 午, 오른쪽=정서 酉, 아래=정북 子, 왼쪽=정동 卯 (시계방향 30도 간격) */
+    var branches=['午','未','申','酉','戌','亥','子','丑','寅','卯','辰','巳'];
+    /* 12지지 정기(본기) 천간: 午丁·未己·申庚·酉辛·戌戊·亥壬·子癸·丑己·寅甲·卯乙·辰戊·巳丙 */
+    var stems=['丁','己','庚','辛','戊','壬','癸','己','甲','乙','戊','丙'];
     var gb=$('#dialBranches'), gs=$('#dialStems'), gt=$('#dialTicks');
     branches.forEach(function(ch,i){
       var a=(i*30-90)*Math.PI/180;
@@ -985,7 +987,7 @@ footer a{color:var(--ink-2)}
       l.setAttribute('class','tick'); gt.appendChild(l);
     });
     stems.forEach(function(ch,i){
-      var a=(i*36-90+18)*Math.PI/180;
+      var a=(i*30-90)*Math.PI/180;
       var t=document.createElementNS(NS,'text');
       t.setAttribute('x',(150+Math.cos(a)*84).toFixed(2));
       t.setAttribute('y',(150+Math.sin(a)*84+3.4).toFixed(2));
