@@ -1689,10 +1689,10 @@ footer a{color:var(--ink-2)}
     var mn=$('#doneMailNote');
     if(mn) mn.style.display = dup ? 'none' : 'block';
     var dl=new Date(); dl.setDate(dl.getDate()+3);
-    var dlEl=$('#doneDeadline'); if(dlEl) dlEl.textContent=fmtDate(dl);
+    var dlEl=$('#doneDeadline'); if(dlEl) dlEl.textContent = dup ? '처음 신청하신 날부터 3일 안' : fmtDate(dl);
     var dlNote=$('#doneDeadlineNote');
     if(dlNote) dlNote.textContent = dup
-      ? '이미 접수된 신청입니다. 아직 입금하지 않으셨다면 입금 기한('+fmtDate(dl)+') 안에 입금해 주시면 됩니다. 접수번호를 메모해 두시면 확인이 빠릅니다.'
+      ? '이미 접수된 신청입니다. 아직 입금하지 않으셨다면 처음 신청하신 날부터 3일 안에 입금해 주시면 됩니다. 접수번호를 메모해 두시면 확인이 빠릅니다.'
       : '입금 기한은 '+fmtDate(dl)+'입니다. 신청서 작성 후 3일 이내에 입금하지 않으면 착수하지 않고 신청이 자동으로 취소됩니다.';
     $('#doneDemo').style.display='none';
     if(!dup && info.remote && info.emailSent===false){
