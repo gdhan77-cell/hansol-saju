@@ -1799,6 +1799,18 @@ footer a{color:var(--ink-2)}
     $$('[data-prev]').forEach(function(b){
       b.addEventListener('click', function(){ showStep(Number(b.getAttribute('data-prev'))); });
     });
+
+    /* 입력을 고치면 그 칸의 오래된 오류 문구는 지운다 */
+    var ERR_MAP={ f_name:'e_name', f_birth:'e_birth', f_email:'e_email', f_email2:'e_email2', f_phone:'e_phone', c_privacy:'e_consent', c_prepay:'e_consent' };
+    Object.keys(ERR_MAP).forEach(function(id){
+      var el=$('#'+id); if(!el) return;
+      ['input','change'].forEach(function(ev){ el.addEventListener(ev, function(){ setErr(ERR_MAP[id],''); }); });
+    });
+    $$('input[name=gender]').forEach(function(r){ r.addEventListener('change', function(){ setErr('e_gender',''); }); });
+    $$('input[name=calendar]').forEach(function(r){ r.addEventListener('change', function(){ setErr('e_cal',''); }); });
+    $$('#timeRow input, #timeRow select, #f_unknown').forEach(function(el){
+      el.addEventListener('change', function(){ setErr('e_time',''); });
+    });
     $('#applyForm').addEventListener('submit', function(e){ e.preventDefault(); submit(); });
 
     $$('input[name=calendar]').forEach(function(r){
